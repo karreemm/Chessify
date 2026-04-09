@@ -1,0 +1,359 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 20% 94%;
+    --foreground: 30 30% 12%;
+
+    --card: 30 15% 90%;
+    --card-foreground: 30 30% 12%;
+
+    --popover: 30 15% 96%;
+    --popover-foreground: 30 30% 10%;
+
+    --primary: 25 45% 35%;
+    --primary-foreground: 30 20% 96%;
+
+    --secondary: 30 12% 85%;
+    --secondary-foreground: 30 30% 15%;
+
+    --muted: 30 10% 88%;
+    --muted-foreground: 30 8% 45%;
+
+    --accent: 30 50% 45%;
+    --accent-foreground: 30 20% 98%;
+
+    --destructive: 0 55% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 15% 80%;
+    --input: 30 15% 82%;
+    --ring: 25 45% 35%;
+
+    --radius: 0.5rem;
+
+    --chess-surface: 30 18% 92%;
+    --chess-panel: 30 15% 90%;
+    --chess-timer: 30 30% 12%;
+    --chess-timer-danger: 0 60% 45%;
+    --chess-highlight: 30 60% 50%;
+    --chess-legal-move: 25 40% 40%;
+    --chess-check: 0 65% 50%;
+    --chess-last-move: 35 50% 65%;
+
+    --move-white: 30 30% 25%;
+    --move-black: 30 15% 40%;
+  }
+
+  .dark {
+    --background: 25 25% 10%;
+    --foreground: 30 15% 90%;
+
+    --card: 25 20% 16%;
+    --card-foreground: 30 15% 92%;
+
+    --popover: 25 20% 14%;
+    --popover-foreground: 30 15% 90%;
+
+    --primary: 25 40% 55%;
+    --primary-foreground: 25 30% 10%;
+
+    --secondary: 25 15% 20%;
+    --secondary-foreground: 30 15% 85%;
+
+    --muted: 25 15% 18%;
+    --muted-foreground: 30 10% 55%;
+
+    --accent: 30 45% 50%;
+    --accent-foreground: 25 30% 10%;
+
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 25 15% 22%;
+    --input: 25 15% 20%;
+    --ring: 25 40% 55%;
+
+    --chess-surface: 25 20% 12%;
+    --chess-panel: 25 20% 18%;
+    --chess-timer: 30 15% 90%;
+    --chess-timer-danger: 0 55% 55%;
+    --chess-highlight: 30 55% 55%;
+    --chess-legal-move: 25 35% 60%;
+    --chess-check: 0 55% 55%;
+    --chess-last-move: 35 45% 35%;
+
+    --move-white: 30 20% 85%;
+    --move-black: 30 10% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-heading {
+    font-family: "Cinzel", serif;
+    letter-spacing: 0.03em;
+  }
+}
+
+@layer components {
+  .wood-panel {
+    background: linear-gradient(
+      145deg,
+      hsl(var(--card)) 0%,
+      hsl(var(--muted)) 100%
+    );
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.08),
+      0 1px 2px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .dark .wood-panel {
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.3),
+      0 1px 2px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  .btn-wood {
+    @apply font-medium transition-all duration-200;
+    background: linear-gradient(
+      to bottom,
+      hsl(var(--primary)) 0%,
+      hsl(var(--primary) / 0.9) 100%
+    );
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid hsl(var(--primary) / 0.3);
+  }
+
+  .btn-wood:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    filter: brightness(1.1);
+  }
+
+  .btn-wood:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-wood-secondary {
+    @apply bg-secondary text-secondary-foreground font-medium transition-all duration-200 border border-border;
+  }
+
+  .btn-wood-secondary:hover {
+    background: hsl(var(--muted));
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .chess-timer {
+    font-family: "Cinzel", serif;
+    font-weight: 600;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--secondary)) 0%,
+      hsl(var(--muted)) 100%
+    );
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .chess-timer-danger {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--destructive) / 0.15) 0%,
+      hsl(var(--destructive) / 0.25) 100%
+    );
+    color: hsl(var(--destructive));
+    animation: pulse-timer 1s ease-in-out infinite;
+    border-color: hsl(var(--destructive) / 0.3);
+  }
+
+  .move-white {
+    color: hsl(var(--move-white));
+    font-weight: 500;
+  }
+
+  .move-black {
+    color: hsl(var(--move-black));
+  }
+
+  .move-highlight {
+    background: hsl(var(--accent) / 0.15);
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 1px hsl(var(--accent) / 0.3);
+  }
+
+  .time-selected {
+    background: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border-color: hsl(var(--primary)) !important;
+  }
+
+  .moves-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .moves-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .btn-wood-secondary:hover,
+  button[variant="outline"]:hover,
+  [role="button"]:hover:not(.btn-wood):not([data-state="active"]) {
+    background-color: hsl(var(--primary) / 0.08) !important;
+    color: hsl(var(--primary)) !important;
+  }
+
+  .bg-secondary:hover,
+  [class*="hover:bg-secondary"]:hover {
+    background-color: hsl(var(--muted)) !important;
+  }
+
+  button[variant="ghost"]:hover,
+  .hover\:bg-secondary:hover {
+    background-color: hsl(var(--primary) / 0.08) !important;
+    color: hsl(var(--primary)) !important;
+  }
+
+  [data-state="open"] button:hover {
+    background-color: hsl(var(--primary) / 0.1);
+  }
+
+  .interactive-hover:hover {
+    background-color: hsl(var(--primary) / 0.08) !important;
+    color: hsl(var(--primary)) !important;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes pulse-timer {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 hsl(var(--destructive) / 0.3);
+  }
+  50% {
+    opacity: 0.9;
+    box-shadow: 0 0 0 3px hsl(var(--destructive) / 0);
+  }
+}
+
+@keyframes thinking-dots {
+  0%,
+  20% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+}
+
+.thinking-dot:nth-child(1) {
+  animation: thinking-dots 1.4s 0s infinite;
+}
+.thinking-dot:nth-child(2) {
+  animation: thinking-dots 1.4s 0.2s infinite;
+}
+.thinking-dot:nth-child(3) {
+  animation: thinking-dots 1.4s 0.4s infinite;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--primary) / 0.5),
+    hsl(var(--primary) / 0.7)
+  );
+  border-radius: 3px;
+  border: 1px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--primary) / 0.7),
+    hsl(var(--primary) / 0.9)
+  );
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.6) hsl(var(--muted));
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: hsl(var(--muted) / 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    to bottom,
+    hsl(var(--primary) / 0.4),
+    hsl(var(--primary) / 0.6)
+  );
+}
+
+[data-state="open"] [class*="overflow-y-auto"]::-webkit-scrollbar,
+.overflow-y-auto::-webkit-scrollbar {
+  width: 5px;
+}
+
+[data-state="open"] [class*="overflow-y-auto"]::-webkit-scrollbar-thumb,
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 3px;
+}
