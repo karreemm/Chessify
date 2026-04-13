@@ -237,10 +237,6 @@
     color: hsl(var(--primary)) !important;
   }
 
-  [data-state="open"] button:hover {
-    background-color: hsl(var(--primary) / 0.1);
-  }
-
   .interactive-hover:hover {
     background-color: hsl(var(--primary) / 0.08) !important;
     color: hsl(var(--primary)) !important;

@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/sheet";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
 import { Check, Sun, Moon } from "lucide-react";
 
 export function SettingsPanel() {
@@ -103,40 +102,6 @@ export function SettingsPanel() {
                   onCheckedChange={(v) => setSettings({ showLastMove: v })}
                 />
               </div>
-            </div>
-
-            <div className="space-y-3">
-              <div className="flex justify-between text-sm">
-                <Label className="font-medium">Animation speed</Label>
-                <span className="text-muted-foreground font-mono">
-                  {settings.animationSpeed}ms
-                </span>
-              </div>
-              <Slider
-                value={[settings.animationSpeed]}
-                onValueChange={([v]) => setSettings({ animationSpeed: v })}
-                min={0}
-                max={500}
-                step={50}
-                className="py-2"
-              />
-            </div>
-
-            <div className="space-y-3">
-              <div className="flex justify-between text-sm">
-                <Label className="font-medium">Board size</Label>
-                <span className="text-muted-foreground font-mono">
-                  {settings.boardSize}px
-                </span>
-              </div>
-              <Slider
-                value={[settings.boardSize]}
-                onValueChange={([v]) => setSettings({ boardSize: v })}
-                min={400}
-                max={720}
-                step={20}
-                className="py-2"
-              />
             </div>
           </div>
 

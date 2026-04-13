@@ -83,17 +83,13 @@ export function ChessBoardWrapper({
   checkSquare,
   forcedSize,
 }: ChessBoardProps) {
+  const DEFAULT_BOARD_SIZE = 560;
+  const DEFAULT_ANIMATION_MS = 200;
   const { settings, boardOrientation } = useGameStore();
-  const {
-    boardTheme,
-    showLegalMoves,
-    showLastMove,
-    showCoordinates,
-    animationSpeed,
-    boardSize,
-  } = settings;
+  const { boardTheme, showLegalMoves, showLastMove, showCoordinates } =
+    settings;
 
-  const actualBoardSize = forcedSize || boardSize;
+  const actualBoardSize = forcedSize || DEFAULT_BOARD_SIZE;
 
   const customSquareStyles = useMemo(() => {
     const styles: Record<string, React.CSSProperties> = {};
@@ -211,7 +207,7 @@ export function ChessBoardWrapper({
           onPieceDrop={onPieceDrop}
           onSquareClick={onSquareClick as any}
           boardOrientation={boardOrientation}
-          animationDuration={animationSpeed}
+          animationDuration={DEFAULT_ANIMATION_MS}
           arePiecesDraggable={true}
           showBoardNotation={showCoordinates}
           customSquareStyles={customSquareStyles}
