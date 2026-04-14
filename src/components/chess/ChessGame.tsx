@@ -317,7 +317,7 @@ export function ChessGame() {
             </div>
           </div>
 
-          <div className="h-full flex flex-col py-4 gap-4">
+          <div className="h-full flex flex-col py-4 gap-4 min-h-0">
             <div className="flex-shrink-0">
               <GameControls
                 onNewGame={() => store.setShowSetupModal(true)}
@@ -356,8 +356,6 @@ export function ChessGame() {
         totalMoves={moveHistory.length}
         copyText={copyText}
         onPlayAgain={handlePlayAgain}
-        whiteTime={timer.whiteTime}
-        blackTime={timer.blackTime}
       />
       <SettingsPanel />
     </div>
