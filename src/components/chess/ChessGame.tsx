@@ -139,7 +139,7 @@ export function ChessGame() {
   const desktopBoardSize = Math.min(Math.floor(windowHeight - 280), 600);
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-background p-2 sm:p-4">
+    <div className="h-[100dvh] w-screen overflow-hidden bg-background p-2 sm:p-4">
       <div className="h-full max-w-[1400px] mx-auto flex flex-col lg:block">
         <div className="lg:hidden flex flex-col h-full gap-2">
           <div className="flex-shrink-0">
